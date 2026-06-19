@@ -74,6 +74,10 @@ async function fetchEntries() {
   }
 }
 
+async function refreshData() {
+  await Promise.all([fetchSummary(), fetchEntries()]);
+}
+
 async function drawWinner() {
   const response = await fetch('/api/admin/draw', {
     method: 'POST',
@@ -142,8 +146,7 @@ if (result) {
 }
 
 window.addEventListener('load', async () => {
-  await fetchSummary();
-  await fetchEntries();
+  await refreshData();
 
   if (entriesList) {
     entriesList.addEventListener('click', async (event) => {
@@ -162,8 +165,7 @@ window.addEventListener('load', async () => {
       });
       const result = await response.json();
       if (result.success) {
-        await fetchSummary();
-        await fetchEntries();
+        await refreshData();
       } else {
         alert(result.error || 'No se pudo eliminar el registro.');
         target.disabled = false;
@@ -185,4 +187,17 @@ window.addEventListener('load', async () => {
       }
     });
   }
+
+  const refreshButton = document.getElementById('refresh-button');
+  if (refreshButton) {
+    refreshButton.addEventListener('click', async () => {
+      refreshButton.disabled = true;
+      refreshButton.textContent = 'Actualizando...';
+      await refreshData();
+      refreshButton.disabled = false;
+      refreshButton.textContent = 'Actualizar';
+    });
+  }
+
+  setInterval(refreshData, 15000);
 });

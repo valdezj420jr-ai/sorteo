@@ -23,9 +23,18 @@ export async function getTicket(ticket: string): Promise<TicketRecord | null> {
 export async function registerParticipant(ticket: string, nombre: string, email: string, telefono: string): Promise<void> {
   await initDb();
 
-  const existing = await dbGet('SELECT id FROM tickets WHERE recibo = ?', ticket);
-  if (existing) {
+  const existingTicket = await dbGet('SELECT id FROM tickets WHERE recibo = ?', ticket);
+  if (existingTicket) {
     throw new Error('Este código ya fue registrado');
+  }
+
+  const existingParticipant = await dbGet(
+    'SELECT id FROM tickets WHERE email = ? OR telefono = ?',
+    email,
+    telefono
+  );
+  if (existingParticipant) {
+    throw new Error('Esta persona ya registró su participación con otro código');
   }
 
   const id = createRecordId();
