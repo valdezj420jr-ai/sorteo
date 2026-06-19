@@ -1,0 +1,37 @@
+---
+import '../styles/global.css';
+export const prerender = false;
+---
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sorteo QR</title>
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="hero">
+        <h1>Panel administrativo del sorteo</h1>
+        <p>El administrador genera el código QR de participación y entrega el cartón impreso. El cliente escanea, completa el formulario y registra su código.</p>
+        <div class="actions">
+          <a class="button button-secondary" href="/admin">Ir al panel</a>
+        </div>
+      </section>
+
+      <section class="cards-grid">
+        <article class="card">
+          <h2>Un único QR</h2>
+          <p>El QR lleva siempre al mismo formulario de participación, ideal para imprimir y repartir.</p>
+        </article>
+        <article class="card">
+          <h2>Lista de inscritos</h2>
+          <p>El administrador puede ver todos los participantes registrados en tiempo real.</p>
+        </article>
+        <article class="card">
+          <h2>Sorteo directo</h2>
+          <p>Desde el panel se elige aleatoriamente un ganador entre los registrados.</p>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

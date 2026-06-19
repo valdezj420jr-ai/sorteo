@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Sorteo QR</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="admin-page">
+  <main class="container">
+    <header class="header">
+      <div class="brand">
+        <h1>Panel administrativo</h1>
+        <p>Genera QR nuevos y administra los tickets con seguridad.</p>
+      </div>
+      <div class="tabs">
+        <button class="tab-button active" data-target="generar-panel">Generar QR</button>
+        <button class="tab-button" data-target="admin-panel">Dashboard</button>
+      </div>
+    </header>
+
+    <section id="generar-panel" class="panel-section">
+      <div class="card">
+        <h2 class="card-title">Generar ticket QR</h2>
+        <p class="help-text">Ingresa el número de recibo para generar un ticket único.</p>
+        <form id="form" class="form-field">
+          <label for="recibo">Número de recibo</label>
+          <input type="text" id="recibo" placeholder="Ej. 3124" required />
+          <button type="submit">Generar QR</button>
+        </form>
+      </div>
+
+      <div id="resultado" class="card result-card" style="display:none;">
+        <h2 class="card-title">QR generado con éxito</h2>
+        <div>
+          <p class="table-note">Comparte este QR con tu cliente para que complete sus datos.</p>
+          <p>URL: <a id="url" target="_blank" rel="noreferrer"></a></p>
+          <p>Ticket: <strong id="ticket"></strong></p>
+        </div>
+        <img id="qr" alt="Código QR generado" />
+      </div>
+    </section>
+
+    <section id="admin-panel" class="panel-section" style="display:none;">
+      <div class="card grid grid-2">
+        <div>
+          <h2 class="card-title">Resumen del sorteo</h2>
+          <div class="status-card">
+            <div class="status-chip success">Tickets pendientes: <strong id="pending-tickets">0</strong></div>
+            <div class="status-chip">Total tickets: <strong id="total-tickets">0</strong></div>
+            <div class="status-chip used">Tickets usados: <strong id="used-tickets">0</strong></div>
+          </div>
+        </div>
+        <div>
+          <h2 class="card-title">Buscar ticket</h2>
+          <div class="form-field">
+            <label for="search-ticket">Ticket</label>
+            <input type="text" id="search-ticket" placeholder="Ingresa el ID del ticket" />
+            <button class="secondary" type="button" id="search-button">Buscar</button>
+          </div>
+          <div id="search-result" class="table-note">Busca un ticket para ver sus datos.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">Últimos tickets generados</h2>
+        <p class="table-note">Lista actualizada de los últimos registros.</p>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Recibo</th>
+                <th>Ticket</th>
+                <th>Estado</th>
+                <th>Creado</th>
+              </tr>
+            </thead>
+            <tbody id="tickets-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

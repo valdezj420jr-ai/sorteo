@@ -1,0 +1,24 @@
+{
+  "name": "sorteo-qr",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --port 3000",
+    "start": "astro dev --port 3000",
+    "build": "astro build",
+    "preview": "astro preview",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@astrojs/node": "^10.1.4",
+    "astro": "^6.4.8",
+    "qrcode": "^1.5.1",
+    "sqlite3": "^5.1.6"
+  },
+  "devDependencies": {
+    "@types/node": "^26.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.5.2"
+  }
+}

@@ -1,0 +1,46 @@
+---
+import '../styles/global.css';
+export const prerender = false;
+---
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Participar en el sorteo</title>
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="page-header">
+        <h1>Participar en el sorteo</h1>
+        <p>Escanea el código QR o usa tu ticket para registrar tu participación.</p>
+      </header>
+
+      <section class="card">
+        <div id="ticket-info" class="result-box">
+          <p>Escanea el QR entregado por el administrador y completa este formulario con el código que te dieron.</p>
+        </div>
+      </section>
+
+      <section class="card">
+        <form id="participation-form" class="form-grid">
+          <label for="ticket">Código de participación</label>
+          <input id="ticket" name="ticket" type="text" required placeholder="Ej. COD12345" />
+
+          <label for="nombre">Nombre completo</label>
+          <input id="nombre" name="nombre" type="text" required placeholder="Ej. María Pérez" />
+
+          <label for="email">Correo electrónico</label>
+          <input id="email" name="email" type="email" required placeholder="ejemplo@correo.com" />
+
+          <label for="telefono">Teléfono</label>
+          <input id="telefono" name="telefono" type="tel" required placeholder="Ej. +57 300 0000000" />
+
+          <button type="submit" class="button">Enviar participación</button>
+        </form>
+        <div id="participation-status" class="result-box"></div>
+      </section>
+    </main>
+
+    <script type="module" src="/scripts/participar-client.js"></script>
+  </body>
+</html>
