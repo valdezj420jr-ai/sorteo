@@ -9,7 +9,10 @@ Aplicación profesional para un sorteo electrónico con códigos QR y validació
 - `src/lib/` - servicios de negocio y capas de acceso a datos.
 - `src/components/` - scripts cliente para interactividad en el panel administrativo y la participación.
 - `src/styles/` - estilos globales y diseño responsivo.
-- `sorteo.db` - base de datos SQLite con los tickets y los registros.
+
+## Persistencia de datos
+
+Este proyecto ahora usa una base de datos remota Supabase para evitar que los registros se pierdan en Netlify.
 
 ## Requisitos
 
@@ -29,6 +32,17 @@ Aplicación profesional para un sorteo electrónico con códigos QR y validació
    ```
 4. El panel administrativo está en `http://localhost:3000/admin`.
 5. La página de participación está en `http://localhost:3000/participar`.
+
+## Variables de entorno
+
+Para conectar con Supabase, crea un archivo `.env` local o configura variables en Netlify:
+
+```env
+SUPABASE_URL=https://your-project.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+```
+
+También puedes usar `SUPABASE_ANON_KEY` si deseas usar la clave pública en lugar de la key de servicio.
 
 ## Descripción de la solución
 

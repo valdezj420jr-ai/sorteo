@@ -8,4 +8,5 @@ yarn-error.log*
 .vscode/
 *.local
 *.log
+.env
 sorteo.db

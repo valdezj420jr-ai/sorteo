@@ -12,9 +12,9 @@
   },
   "dependencies": {
     "@astrojs/netlify": "^7.0.13",
+    "@supabase/supabase-js": "^2.108.2",
     "astro": "^6.4.8",
-    "qrcode": "^1.5.1",
-    "sqlite3": "^5.1.6"
+    "qrcode": "^1.5.1"
   },
   "devDependencies": {
     "@types/node": "^26.0.0",
