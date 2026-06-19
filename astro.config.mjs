@@ -1,8 +1,8 @@
 import { defineConfig } from 'astro/config';
-import node from '@astrojs/node';
+import netlify from '@astrojs/netlify/functions';
 
 export default defineConfig({
   output: 'server',
-  adapter: node({ mode: 'standalone' }),
-  site: 'http://localhost:3000',
+  adapter: netlify(),
+  site: 'https://sorteoestacion1.netlify.app',
 });

@@ -11,7 +11,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@astrojs/node": "^10.1.4",
+    "@astrojs/netlify": "^7.0.13",
     "astro": "^6.4.8",
     "qrcode": "^1.5.1",
     "sqlite3": "^5.1.6"
