@@ -34,7 +34,7 @@ export async function registerParticipant(ticket: string, nombre: string, email:
     telefono
   );
   if (existingParticipant) {
-    throw new Error('Esta persona ya registró su participación con otro código');
+    throw new Error('Ya existe un registro con este correo o teléfono');
   }
 
   const id = createRecordId();

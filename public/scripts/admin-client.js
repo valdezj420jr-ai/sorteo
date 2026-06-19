@@ -58,19 +58,36 @@ function renderWinner(winner) {
   `;
 }
 
+function renderAdminError(message) {
+  if (entriesList) entriesList.innerHTML = `<p class="alert">${message}</p>`;
+  if (summaryList) summaryList.innerHTML = `<div class="summary-error"><p class="alert">${message}</p></div>`;
+}
+
 async function fetchSummary() {
-  const response = await fetch('/api/admin/summary');
-  const payload = await response.json();
-  if (payload.success) {
-    renderSummary(payload.summary);
+  try {
+    const response = await fetch('/api/admin/summary');
+    const payload = await response.json();
+    if (payload.success) {
+      renderSummary(payload.summary);
+      return;
+    }
+    renderAdminError(payload.error || 'Error al obtener el resumen');
+  } catch (error) {
+    renderAdminError('No se pudo conectar con el servidor de admin');
   }
 }
 
 async function fetchEntries() {
-  const response = await fetch('/api/admin/entries');
-  const payload = await response.json();
-  if (payload.success) {
-    renderEntries(payload.entries || []);
+  try {
+    const response = await fetch('/api/admin/entries');
+    const payload = await response.json();
+    if (payload.success) {
+      renderEntries(payload.entries || []);
+      return;
+    }
+    renderAdminError(payload.error || 'Error al obtener las participaciones');
+  } catch (error) {
+    renderAdminError('No se pudo conectar con el servidor de admin');
   }
 }
 

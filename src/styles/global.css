@@ -143,6 +143,20 @@ input {
   gap: 6px;
 }
 
+.summary-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+}
+
+.summary-error {
+  padding: 18px;
+  border-radius: 18px;
+  background: #fff7ed;
+}
+
 .ticket-list {
   display: grid;
   gap: 16px;
